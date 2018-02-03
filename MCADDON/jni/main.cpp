@@ -21,7 +21,7 @@ void attack(Player*p,Entity&e){
 	e.remove();
 }
 void interact(Player*p,Entity&e){
-	attack_(*p,e);
+	attack_(p,e);
 }
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*)&Player::attack, (void*) &attack, (void**) &attack_);
