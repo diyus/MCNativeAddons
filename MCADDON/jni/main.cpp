@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <Substrate.h>
 
+GameMode*gm;
+
 class Entity{
 	public:
 	void remove();
@@ -19,14 +21,15 @@ class GameMode{
 	void interact(Player&,Entity&);
 };
 
-void (*attack_)(void*,Player*,Entity&);
+void (*attack_)(void*,Player&,Entity&);
 void (*interact_)(Player*,Entity&);
 
 void attack(void*thiz,Player&p,Entity&e){
 	e.remove();
+	gm = thiz;
 }
 void interact(Player*p,Entity&e){
-	interact_(p,e);
+	attack_(gm,*p,e);
 }
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*)&GameMode::attack, (void*) &attack, (void**) &attack_);
