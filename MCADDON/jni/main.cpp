@@ -24,7 +24,7 @@ GameMode*gm;
 void (*attack_)(void*,Player&,Entity&);
 void (*interact_)(Player*,Entity&);
 
-void attack(void*thiz,Player&p,Entity&e){
+void attack(GameMode*thiz,Player&p,Entity&e){
 	e.remove();
 	gm = thiz;
 }
