@@ -4,8 +4,6 @@
 #include <stdlib.h>
 #include <Substrate.h>
 
-GameMode*gm;
-
 class Entity{
 	public:
 	void remove();
@@ -20,6 +18,8 @@ class GameMode{
 	void attack(Player&,Entity&);
 	void interact(Player&,Entity&);
 };
+
+GameMode*gm;
 
 void (*attack_)(void*,Player&,Entity&);
 void (*interact_)(Player*,Entity&);
