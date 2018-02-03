@@ -9,7 +9,7 @@ class Entity{
 	void remove();
 };
 class Player:public Entity{
-	Public:
+	public:
 	void interact(Entity&);
 };
 
@@ -20,7 +20,7 @@ class GameMode{
 };
 
 void (*attack_)(void*,Player*,Entity&);
-void (*interact_)(Player&,Entity&);
+void (*interact_)(Player*,Entity&);
 
 void attack(void*thiz,Player&p,Entity&e){
 	e.remove();
