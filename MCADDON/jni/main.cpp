@@ -7,6 +7,8 @@
 class Entity{
 	public:
 	void remove();
+	void doFireHurt(int);
+	void setOnFire(int);
 };
 class Player:public Entity{
 	public:
@@ -21,7 +23,7 @@ void attack(Player*p,Entity&e){
 	e.remove();
 }
 void interact(Player*p,Entity&e){
-	attack_(p,e);
+	e.setOnFire(10);
 }
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*)&Player::attack, (void*) &attack, (void**) &attack_);
